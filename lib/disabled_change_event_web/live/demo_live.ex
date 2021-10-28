@@ -26,7 +26,7 @@ defmodule DisabledChangeEventWeb.DemoLive do
 
   def render(assigns) do
     ~H"""
-    <.form let={f} for={@changeset} as="profile" phx_change={"validate"} phx_submit="save">
+    <.form let={f} for={@changeset} as="profile" phx_change="validate" phx_submit="save">
 
     <div>
       <%= label f, :string_one %>
