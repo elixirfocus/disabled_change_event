@@ -30,8 +30,8 @@ defmodule DisabledChangeEventWeb.DemoLive do
 
     <div>
       <%= label f, :string_one %>
-      <%# Disabled form inputs are not included with the validate payload,
-      which was an unexpected before for me. %>
+      <%# Disabled form inputs are not included with the phx_change/phx_submit payloads,
+      which was an unexpected behavior for me. %>
       <%= text_input f, :string_one, [disabled: true] %>
       <%= error_tag f, :string_one %>
     </div>
