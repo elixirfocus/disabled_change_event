@@ -13,14 +13,20 @@ defmodule DisabledChangeEventWeb.DemoLive do
   end
 
   def handle_event("validate", %{"profile" => profile_params}, socket) do
-    IO.inspect(profile_params, label: "profile_params")
+    IO.inspect(profile_params, label: "profile_params during validate")
+
+    {:noreply, socket}
+  end
+
+  def handle_event("save", %{"profile" => profile_params}, socket) do
+    IO.inspect(profile_params, label: "profile_params during save")
 
     {:noreply, socket}
   end
 
   def render(assigns) do
     ~H"""
-    <.form let={f} for={@changeset} as="profile" phx_change={"validate"}>
+    <.form let={f} for={@changeset} as="profile" phx_change={"validate"} phx_submit="save">
 
     <div>
       <%= label f, :string_one %>
@@ -34,6 +40,10 @@ defmodule DisabledChangeEventWeb.DemoLive do
       <%= label f, :string_two %>
       <%= text_input f, :string_two %>
       <%= error_tag f, :string_two %>
+    </div>
+
+    <div>
+     <%= submit "Submit" %>
     </div>
 
     </.form>
